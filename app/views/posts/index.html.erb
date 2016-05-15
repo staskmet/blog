@@ -7,7 +7,9 @@
     <p class="lead blog-description">My experimental blog.</p>
   </div>
 -->
-<button class="btn btn-lnk"><%= link_to 'New Post', new_post_path %></button>
+
+<%= link_to 'New post', new_post_path, class: 'btn btn-lnk' %>
+
   <div class="row">
     <div class="col-sm-8 blog-main">
       <% @posts.each do |post| %>
