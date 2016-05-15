@@ -45,3 +45,6 @@ group :development do
   gem 'spring'
 end
 
+#!!_!!
+gem 'mysql2'
+gem 'bootstrap-sass'

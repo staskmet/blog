@@ -1,8 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Posts</h1>
+<!--
+<div class="container">
+  <div class="blog-header">
+    <h1 class="blog-title">Listing Posts</h1>
+    <p class="lead blog-description">My experimental blog.</p>
+  </div>
+-->
+<button class="btn btn-lnk"><%= link_to 'New Post', new_post_path %></button>
+  <div class="row">
+    <div class="col-sm-8 blog-main">
+      <% @posts.each do |post| %>
+        <div class="blog-post">
+          <h2 class="blog-post-title"><%= post.title %></h2>
+          <p class="blog-post-meta"><%= post.updated_at %></p>
+          <p><%= post.body %></p>
+          <p><%= link_to 'Show', post %> | <%= link_to 'Edit', edit_post_path(post) %> | <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
-<table>
+<!-- /div -->
+
+<!--
+<table class="table table-striped">
+
   <thead>
     <tr>
       <th>Title</th>
@@ -11,19 +34,29 @@
     </tr>
   </thead>
 
+
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= post.title %></td>
-        <td><%= post.body %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <div>
+              <%= post.title %>
+          </div>
+          <div>
+            <%= post.body %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <%= link_to 'Show', post %> |
+          <%= link_to 'Edit', edit_post_path(post) %> |
+          <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+-->
 
 <br>
-
-<%= link_to 'New Post', new_post_path %>
