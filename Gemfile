@@ -48,3 +48,4 @@ end
 #!!_!!
 gem 'mysql2'
 gem 'bootstrap-sass'
+gem 'devise'
