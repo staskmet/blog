@@ -49,3 +49,4 @@ end
 gem 'mysql2'
 gem 'bootstrap-sass'
 gem 'devise'
+gem 'config'
