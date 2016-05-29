@@ -15,8 +15,14 @@
       <% @posts.each do |post| %>
         <div class="blog-post">
           <h2 class="blog-post-title"><%= post.title %></h2>
+          <% if post.user.avatar? %>
+            <%= image_tag(post.user.avatar.thumb.url) %>
+          <% end %>
           <p class="blog-post-meta"><%= post.updated_at %> by <%= post.user.email %></p>
           <p><%= post.body %></p>
+          <% if post.category %>
+            <p align="right">Category: <%= post.category.name %></p>
+          <% end %>
           <p><%= link_to 'Show', post %>
               <% if user_signed_in? && post.user == current_user %> |
                 <%= link_to 'Edit', edit_post_path(post) %> |
