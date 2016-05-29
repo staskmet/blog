@@ -2,6 +2,9 @@
 
 <div class="blog-post">
   <h2 class="blog-post-title"><%= @post.title %></h2>
+  <% if @post.user.avatar? %>
+    <%= image_tag(@post.user.avatar.url) %>
+  <% end %>
   <p class="blog-post-meta"><%= @post.updated_at %> by <%= @post.user.email %></p>
   <p><%= @post.body %></p>
   <% unless @post.category==nil %>
