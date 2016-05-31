@@ -1,0 +1,18 @@
+%p#notice= notice
+.blog-post
+  %h2.blog-post-title= @post.title
+  - if @post.user.avatar?
+    = image_tag(@post.user.avatar.url)
+  %p.blog-post-meta
+    = @post.updated_at
+    by #{@post.user.email}
+  %p= @post.body
+  - if @post.category
+    %p{align: "right"}
+      Category: #{@post.category.name}
+  %p
+    - if user_signed_in? && @post.user == current_user
+      = link_to 'Edit', edit_post_path(@post), class: "btn btn-warning"
+      = link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
+
+  = link_to 'Back', posts_path, class: "btn btn-default"

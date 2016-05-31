@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # !!_!! мои добавки
   root 'posts#index'
+  namespace :admin do
+    resources :categories
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
