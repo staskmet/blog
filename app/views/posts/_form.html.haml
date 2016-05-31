@@ -11,7 +11,8 @@
     = image_tag(current_user.avatar.url)
 
   = f.input :title
-  = f.input :body, as: :text
+
+  = f.cktext_area :body
   = f.association :category
 
   = f.button :submit
