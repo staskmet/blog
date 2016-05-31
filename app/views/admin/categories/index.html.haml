@@ -1,0 +1,14 @@
+%h1 Listing сategories
+
+%table{class: "table table-condensed table-bordered" }
+  - @admin_categories.each do |admin_category|
+    %tr
+      %th
+        = admin_category.name
+      %td= link_to 'Show', admin_category_path(admin_category)
+      %td= link_to 'Edit', edit_admin_category_path(admin_category)
+      %td= link_to 'Destroy', admin_category_path(admin_category), :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Category', new_admin_category_path, class: "btn btn-primary"

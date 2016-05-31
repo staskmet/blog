@@ -1,0 +1,17 @@
+= simple_form_for(@post) do |f|
+  - if @post.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@post.errors.count, "error")
+        prohibited this post from being saved:
+      %ul
+        - @post.errors.full_messages.each do |message|
+          %li= message
+  - if current_user.avatar?
+    = image_tag(current_user.avatar.url)
+
+  = f.input :title
+  = f.input :body, as: :text
+  = f.association :category
+
+  = f.button :submit
