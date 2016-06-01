@@ -6,6 +6,9 @@
   <p class="lead blog-description">My experimental blog.</p>
   </div>
 = link_to 'New post', new_post_path, class: 'btn btn-primary'
+
+= paginate @posts
+
 .row
   .col-sm-8.blog-main
     - @posts.each do |post|
@@ -15,7 +18,7 @@
           = image_tag(post.user.avatar.thumb.url)
         %p.blog-post-meta
           = post.updated_at
-          by #{post.user.email}
+          by #{post.user.email} (#{post.views} views)
         %p= post.body.html_safe()
         - if post.category
           %p{align: "right"}
