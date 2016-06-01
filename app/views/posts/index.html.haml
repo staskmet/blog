@@ -16,7 +16,7 @@
         %p.blog-post-meta
           = post.updated_at
           by #{post.user.email}
-        %p= post.body
+        %p= post.body.html_safe()
         - if post.category
           %p{align: "right"}
             Category: #{post.category.name}
