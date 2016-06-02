@@ -5,11 +5,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    p params
-    p "HASH"
-    p params[:sort_by]
-    order_by = {params[:sort_by] => :desc}
-    p order_by
+
     if params[:sort_by].nil?
       # !!_!! значение по умолчанию
       order_by = {created_at: :desc}
