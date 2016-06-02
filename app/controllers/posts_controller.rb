@@ -5,12 +5,27 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+
+    if params[:sort_by].nil?
+      # !!_!! значение по умолчанию
+      order_by = {created_at: :desc}
+    else
+      order_by = {params[:sort_by] => :desc}
+    end
+
+    @posts = Post.order(order_by).page(params[:page]).per(3)
+
+    unless params[:filter_by].nil?
+      @posts = @posts = @posts.where(category_id: params[:filter_by])
+    end
+
+    @admin_categories = Category.all
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @post.update(views: @post.views + 1)
   end
 
   # GET /posts/new
