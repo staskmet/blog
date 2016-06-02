@@ -5,14 +5,24 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    # @posts = Post.all
     p params
-
-    if params[:filter_by] != nil
-      @posts = Post.order(created_at: :desc).page(params[:page]).per(3).where(category_id: params[:filter_by])
+    p "HASH"
+    p params[:sort_by]
+    order_by = {params[:sort_by] => :desc}
+    p order_by
+    if params[:sort_by].nil?
+      # !!_!! значение по умолчанию
+      order_by = {created_at: :desc}
     else
-      @posts = Post.order(created_at: :desc).page(params[:page]).per(3)
+      order_by = {params[:sort_by] => :desc}
     end
+
+    @posts = Post.order(order_by).page(params[:page]).per(3)
+
+    unless params[:filter_by].nil?
+      @posts = @posts = @posts.where(category_id: params[:filter_by])
+    end
+
     @admin_categories = Category.all
   end
 

@@ -12,7 +12,7 @@
         - if post.user.avatar?
           = image_tag(post.user.avatar.thumb.url)
         %p.blog-post-meta
-          = post.updated_at
+          = post.created_at
           by #{post.user.email} (#{post.views} views)
         %p= post.body.html_safe
         - if post.category
@@ -29,7 +29,15 @@
     - unless @admin_categories.empty?
       %ul
         %li
-          %b= link_to 'All', posts_path
-      - @admin_categories.each do |admin_category|
-        %li
-          = link_to admin_category.name, posts_path(filter_by: admin_category.id)
+          %b
+            = link_to 'All', posts_path
+        - @admin_categories.each do |admin_category|
+          %li
+            = link_to admin_category.name, posts_path(filter_by: admin_category.id)
+    %h3
+      Sort by
+    %ul
+      %li
+        = link_to 'Date of creation', posts_path(sort_by: 'created_at')
+      %li
+        = link_to 'Number of views', posts_path(sort_by: 'views')
