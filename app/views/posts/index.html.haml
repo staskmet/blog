@@ -1,16 +1,11 @@
 %p#notice= notice
-/
-  <div class="container">
-  <div class="blog-header">
-  <h1 class="blog-title">Listing Posts</h1>
-  <p class="lead blog-description">My experimental blog.</p>
-  </div>
+
 = link_to 'New post', new_post_path, class: 'btn btn-primary'
 
 = paginate @posts
 
 .row
-  .col-sm-8.blog-main
+  .col-md-9.blog-main
     - @posts.each do |post|
       .blog-post
         %h2.blog-post-title= post.title
@@ -19,7 +14,7 @@
         %p.blog-post-meta
           = post.updated_at
           by #{post.user.email} (#{post.views} views)
-        %p= post.body.html_safe()
+        %p= post.body.html_safe
         - if post.category
           %p{align: "right"}
             Category: #{post.category.name}
@@ -28,3 +23,13 @@
           - if user_signed_in? && post.user == current_user
             = link_to 'Edit', edit_post_path(post), class: "btn btn-warning"
             = link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
+  .col-md-3
+    %h3
+      Categories
+    - unless @admin_categories.empty?
+      %ul
+        %li
+          %b= link_to 'All', posts_path
+      - @admin_categories.each do |admin_category|
+        %li
+          = link_to admin_category.name, posts_path(filter_by: admin_category.id)
