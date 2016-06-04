@@ -1,6 +1,6 @@
 %p#notice= notice
 
-= link_to (t "posts.button.new"), new_post_path, class: 'btn btn-primary'
+= link_to t("posts.button.new"), new_post_path, class: 'btn btn-primary'
 
 = paginate @posts
 
@@ -20,10 +20,10 @@
           %p{align: "right"}
             #{t "posts.label.category"}: #{post.category.name}
         %p
-          = link_to (t "posts.button.show"), post, class: "btn btn-info"
+          = link_to t("posts.button.show"), post, class: "btn btn-info"
           - if user_signed_in? && post.user == current_user
-            = link_to (t "posts.button.edit"), edit_post_path(post), class: "btn btn-warning"
-            = link_to (t "posts.button.destroy"), post, method: :delete, data: { confirm: (t "posts.confirm.destroy") }, class: "btn btn-danger"
+            = link_to t("posts.button.edit"), edit_post_path(post), class: "btn btn-warning"
+            = link_to t("posts.button.destroy"), post, method: :delete, data: { confirm: t("posts.confirm.destroy") }, class: "btn btn-danger"
   .col-md-3
     %h3
       =t "posts.label.categories"
@@ -31,7 +31,7 @@
       %ul
         %li
           %b
-            = link_to (t "posts.label.categories_all"), posts_path
+            = link_to t("posts.label.categories_all"), posts_path
         - @admin_categories.each do |admin_category|
           %li
             = link_to admin_category.name, posts_path(filter_by: admin_category.id)
@@ -39,6 +39,6 @@
       =t "posts.label.sort_by"
     %ul
       %li
-        = link_to (t "posts.label.created_at"), posts_path(sort_by: 'created_at')
+        = link_to t("posts.label.created_at"), posts_path(sort_by: 'created_at')
       %li
-        = link_to (t "posts.label.views"), posts_path(sort_by: 'views')
+        = link_to t("posts.label.views"), posts_path(sort_by: 'views')

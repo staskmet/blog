@@ -1,0 +1,21 @@
+en:
+  simple_form:
+    labels:
+      category:
+        name: 'Name'
+  categories:
+    label:
+      list_header: "Listing categories"
+      new_header: "New category"
+      edit_header: "Edit category"
+      show_header: "View category"
+      name: "Name"
+      category: "Category"
+    button:
+      new: "New category"
+      show: "Show"
+      edit: "Edit"
+      destroy: "Destroy"
+      back: "Back"
+    confirm:
+      destroy: "Are you sure?"

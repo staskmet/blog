@@ -1,0 +1,20 @@
+en:
+  post:
+    label:
+      new_header: "New post"
+      edit_header: "Edit post"
+      show_header: "View post"
+      title: "Title"
+      body: "Body"
+      created_at: "Date of creation"
+      updated_at: "Date of change"
+      views: "Views"
+      category: "Категория"
+    button:
+      new: "New post"
+      show: "Show"
+      edit: "Edit"
+      destroy: "Destroy"
+      back: "Back"
+    confirm:
+      destroy: "Are you sure?"

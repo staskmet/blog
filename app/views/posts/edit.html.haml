@@ -1,4 +1,4 @@
-%h1 #{ t "post.label.edit_header"}
+%h1= t "post.label.edit_header"
 = render "form"
-= link_to (t "post.button.show"), @post, class: "btn btn-info"
-= link_to (t "post.button.back"), posts_path, class: "btn btn-default"
+= link_to t("post.button.show"), @post, class: "btn btn-info"
+= link_to t("post.button.back"), posts_path, class: "btn btn-default"

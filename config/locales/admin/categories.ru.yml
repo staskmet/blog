@@ -1,0 +1,21 @@
+ru:
+  simple_form:
+    labels:
+      category:
+        name: 'Название'
+  categories:
+    label:
+      list_header: "Список категорий"
+      new_header: "Новая категория"
+      edit_header: "Изменение категории"
+      show_header: "Просмотр категории"
+      name: "Название"
+      category: "Категория"
+    button:
+      new: "Создать категорию"
+      show: "Показать"
+      edit: "Изменить"
+      destroy: "Удалить"
+      back: "Назад"
+    confirm:
+      destroy: "Вы уверены?"
