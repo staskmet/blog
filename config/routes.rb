@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
   scope ':locale', locale: /#{I18n.available_locales.join('|')}/ do
     devise_for :users
-    resources :posts
-    # The priority is based upon order of creation: first created -> highest priority.
-    # See how all your routes lay out with "rake routes".
-
-    # You can have the root of your site routed with "root"
-    # !!_!! мои добавки
+    resources :posts do
+      resources :comments
+    end
+    # !!_!!
+    # Важно: первее созданный имеет более высокий приоритет.
     root 'posts#index'
     namespace :admin do
       resources :categories

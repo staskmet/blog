@@ -15,9 +15,27 @@
     %p{align: "right"}
       #{ t "post.label.category" }:
       = @post.category.name
+
+  - if @post.comments
+    %h2= t("post.label.comments")
+    = @post.comments.each do |comment|
+      %p
+        %b #{t("post.label.commenter")}:
+        = comment.commenter
+
+        %b= t("post.label.comment")
+        %p= comment.body.html_safe
+
+    %h2= t("post.label.comment_add")
+    = simple_form_for([@post, @post.comments.build]) do |f|
+      %p
+        = f.cktext_area :body
+        = f.submit
   %p
-    - if user_signed_in? && @post.user == current_user
-      = link_to t("post.button.edit"), edit_post_path(@post), class: "btn btn-warning"
-      = link_to t("post.button.destroy"), @post, method: :delete, data: { confirm: t("post.confirm.destroy") }, class: "btn btn-danger"
+    - if user_signed_in?
+      = link_to t("post.button.comment"), new_post_comment_path(@post), class: "btn btn-success"
+      - if @post.user == current_user
+        = link_to t("post.button.edit"), edit_post_path(@post), class: "btn btn-warning"
+        = link_to t("post.button.destroy"), @post, method: :delete, data: { confirm: t("post.confirm.destroy") }, class: "btn btn-danger"
 
   = link_to t("post.button.back"), posts_path, class: "btn btn-default"

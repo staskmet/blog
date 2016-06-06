@@ -8,10 +8,11 @@ class User < ActiveRecord::Base
          :confirmable
 
   # !!_!!
-  
+
   validates_presence_of   :avatar
   validates_integrity_of  :avatar
   validates_processing_of :avatar
 
   has_many :posts
+  has_many :comments
 end

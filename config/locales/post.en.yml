@@ -9,12 +9,17 @@ en:
       created_at: "Date of creation"
       updated_at: "Date of change"
       views: "Views"
-      category: "Категория"
+      category: "Category"
+      comment: "Comment"
+      comments: "Comments"
+      commenter: "Commenter"
+      comment_add: "Add comment"
     button:
       new: "New post"
       show: "Show"
       edit: "Edit"
       destroy: "Destroy"
       back: "Back"
+      comment: "Comment"
     confirm:
       destroy: "Are you sure?"

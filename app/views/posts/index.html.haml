@@ -21,9 +21,11 @@
             #{t "posts.label.category"}: #{post.category.name}
         %p
           = link_to t("posts.button.show"), post, class: "btn btn-info"
-          - if user_signed_in? && post.user == current_user
-            = link_to t("posts.button.edit"), edit_post_path(post), class: "btn btn-warning"
-            = link_to t("posts.button.destroy"), post, method: :delete, data: { confirm: t("posts.confirm.destroy") }, class: "btn btn-danger"
+          - if user_signed_in?
+            = link_to t("posts.button.comment"), new_post_comment_path(post), class: "btn btn-success"
+            - if post.user == current_user
+              = link_to t("posts.button.edit"), edit_post_path(post), class: "btn btn-warning"
+              = link_to t("posts.button.destroy"), post, method: :delete, data: { confirm: t("posts.confirm.destroy") }, class: "btn btn-danger"
   .col-md-3
     %h3
       =t "posts.label.categories"

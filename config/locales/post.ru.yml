@@ -10,11 +10,16 @@ ru:
       updated_at: "Дата изменения"
       views: "Просмотры"
       category: "Категория"
+      comment: "Комментарий"
+      comments: "Комментарии"
+      commenter: "Комментатор"
+      comment_add: "Добавить комментарий"
     button:
       new: "Создать пост"
       show: "Показать"
       edit: "Изменить"
       destroy: "Удалить"
       back: "Назад"
+      comment: "Комментировать"
     confirm:
       destroy: "Вы уверены?"
