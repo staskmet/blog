@@ -1,6 +1,6 @@
 %p#notice= notice
 
-= link_to 'New post', new_post_path, class: 'btn btn-primary'
+= link_to t("posts.button.new"), new_post_path, class: 'btn btn-primary'
 
 = paginate @posts
 
@@ -12,32 +12,33 @@
         - if post.user.avatar?
           = image_tag(post.user.avatar.thumb.url)
         %p.blog-post-meta
+          %b= post.user.email
+          (#{t "posts.label.views"}: #{post.views})
           = post.created_at
-          by #{post.user.email} (#{post.views} views)
         %p= post.body.html_safe
         - if post.category
           %p{align: "right"}
-            Category: #{post.category.name}
+            #{t "posts.label.category"}: #{post.category.name}
         %p
-          = link_to 'Show', post, class: "btn btn-info"
+          = link_to t("posts.button.show"), post, class: "btn btn-info"
           - if user_signed_in? && post.user == current_user
-            = link_to 'Edit', edit_post_path(post), class: "btn btn-warning"
-            = link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
+            = link_to t("posts.button.edit"), edit_post_path(post), class: "btn btn-warning"
+            = link_to t("posts.button.destroy"), post, method: :delete, data: { confirm: t("posts.confirm.destroy") }, class: "btn btn-danger"
   .col-md-3
     %h3
-      Categories
+      =t "posts.label.categories"
     - unless @admin_categories.empty?
       %ul
         %li
           %b
-            = link_to 'All', posts_path
+            = link_to t("posts.label.categories_all"), posts_path
         - @admin_categories.each do |admin_category|
           %li
             = link_to admin_category.name, posts_path(filter_by: admin_category.id)
     %h3
-      Sort by
+      =t "posts.label.sort_by"
     %ul
       %li
-        = link_to 'Date of creation', posts_path(sort_by: 'created_at')
+        = link_to t("posts.label.created_at"), posts_path(sort_by: 'created_at')
       %li
-        = link_to 'Number of views', posts_path(sort_by: 'views')
+        = link_to t("posts.label.views"), posts_path(sort_by: 'views')

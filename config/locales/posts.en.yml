@@ -1,0 +1,16 @@
+en:
+  posts:
+    label:
+      created_at: "Date of creation"
+      views: "Views"
+      sort_by: "Sort by"
+      category: "Category"
+      categories: "Categories"
+      categories_all: "All"
+    button:
+      new: "New post"
+      show: "Show"
+      edit: "Edit"
+      destroy: "Destroy"
+    confirm:
+      destroy: "Are you sure?"

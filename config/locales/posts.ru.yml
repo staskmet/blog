@@ -1,0 +1,16 @@
+ru:
+  posts:
+    label:
+      created_at: "Дата создания"
+      views: "Просмотры"
+      sort_by: "Сортировка"
+      category: "Категория"
+      categories: "Категории"
+      categories_all: "Все"
+    button:
+      new: "Создать пост"
+      show: "Показать"
+      edit: "Изменить"
+      destroy: "Удалить"
+    confirm:
+      destroy: "Вы уверены?"

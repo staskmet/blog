@@ -13,23 +13,27 @@
         %p.lead.blog-description My experimental blog.
         - if user_signed_in?
           - if current_user.has_role? :admin
-            %b ADMIN
+            %b= t "navbar.label.admin"
           %p.blog-main= current_user.email
         %nav.navbar.navbar-default
           .container
             .navbar-header
-              %a.navbar-brand{href: "/"} Home
+              %a.navbar-brand{href: "/"}= t "navbar.button.home"
             %ul.nav.navbar-nav.navbar-left
               - if user_signed_in?
                 %li
-                  = link_to "Control panel", admin_categories_url, class: "btn btn-link"
+                  = link_to t("navbar.button.control_panel"), admin_categories_url, class: "btn btn-link"
                 %li
-                  = link_to "Profile", edit_user_registration_path, class: "btn btn-link"
+                  = link_to t("navbar.button.profile"), edit_user_registration_path, class: "btn btn-link"
                 %li
-                  = link_to "Logout", destroy_user_session_path, method: :delete, class: "btn btn-link"
+                  = link_to t("navbar.button.logout"), destroy_user_session_path, method: :delete, class: "btn btn-link"
               - else
                 %li
-                  = link_to "Log in", new_user_session_path, class: "btn btn-link"
+                  = link_to t("navbar.button.login"), new_user_session_path, class: "btn btn-link"
                 %li
-                  = link_to "Registration", new_user_registration_path, class: "btn btn-link"
+                  = link_to t("navbar.button.registration"), new_user_registration_path, class: "btn btn-link"
+              %li
+                = link_to_unless_current "RU",  locale: "ru"
+              %li
+                = link_to_unless_current "EN", locale: "en"
       = yield

@@ -1,0 +1,20 @@
+ru:
+  post:
+    label:
+      new_header: "Новый пост"
+      edit_header: "Изменение поста"
+      show_header: "Просмотр поста"
+      title: "Заголовок"
+      body: "Содержимое"
+      created_at: "Дата создания"
+      updated_at: "Дата изменения"
+      views: "Просмотры"
+      category: "Категория"
+    button:
+      new: "Создать пост"
+      show: "Показать"
+      edit: "Изменить"
+      destroy: "Удалить"
+      back: "Назад"
+    confirm:
+      destroy: "Вы уверены?"

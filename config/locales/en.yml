@@ -20,4 +20,13 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  navbar:
+    label:
+      admin: "Administrator"
+    button:
+      home: "Home"
+      control_panel: "Control panel"
+      profile: "Profile"
+      login: "Login"
+      logout: "Logout"
+      registration: "Registration"
