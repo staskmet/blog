@@ -1,0 +1,11 @@
+%h2= t("post.label.comments")
+= @comments.each do |comment|
+  %p
+    %b #{t("post.label.commenter")}:
+    = comment.user.email
+  %p
+    %b #{t("post.label.comment")}:
+
+  %p= comment.body.html_safe
+
+= render "comments/form"

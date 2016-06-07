@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160606114349) do
+ActiveRecord::Schema.define(version: 20160607052721) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20160606114349) do
   end
 
   add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.string   "title",          limit: 255,               null: false
@@ -82,4 +83,5 @@ ActiveRecord::Schema.define(version: 20160606114349) do
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
 
   add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users"
 end
