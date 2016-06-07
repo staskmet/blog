@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @post, notice: 'Comment was successfully created.' }
+        format.html { redirect_to @post, notice: t('comment.notice.created') }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
@@ -44,9 +44,10 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
   def update
+    @post = Post.find(params[:post_id])
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
+        format.html { redirect_to post_path(@post), notice: t('comment.notice.updated') }
         format.json { render :show, status: :ok, location: @comment }
       else
         format.html { render :edit }
@@ -58,9 +59,10 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
+    @post = Post.find(params[:post_id])
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to post_path(@post), notice: t('comment.notice.destroyed') }
       format.json { head :no_content }
     end
   end
@@ -78,7 +80,7 @@ class CommentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
       # params.fetch(:comment, {})
-      params.require(:comment).permit(:body, :post_id, :user_id)
+      params.require(:comment).permit(:body)
     end
 
 end

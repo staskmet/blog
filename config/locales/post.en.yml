@@ -14,6 +14,10 @@ en:
       comments: "Comments"
       commenter: "Commenter"
       comment_add: "Add comment"
+    notice:
+      created: "Post was successfully created."
+      updated: "Post was successfully updated."
+      destroyed: "Post was seccessfully destroyed."
     button:
       new: "New post"
       show: "Show"
@@ -23,3 +27,8 @@ en:
       comment: "Comment"
     confirm:
       destroy: "Are you sure?"
+  comment:
+    notice:
+      created: "Comment was successfully created."
+      updated: "Comment was successfully updated."
+      destroyed: "Comment was seccessfully destroyed."

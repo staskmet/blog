@@ -16,11 +16,11 @@
       #{ t "post.label.category" }:
       = @post.category.name
 
-  = render "comments/comment"
-
   %p
-    - if user_signed_in? && @post.user == current_user
+    - if user_signed_in? && (@post.user == current_user || current_user.has_role?(:admin))
       = link_to t("post.button.edit"), edit_post_path(@post), class: "btn btn-warning"
       = link_to t("post.button.destroy"), @post, method: :delete, data: { confirm: t("post.confirm.destroy") }, class: "btn btn-danger"
+
+  = render "comments/comment"
 
   = link_to t("post.button.back"), posts_path, class: "btn btn-default"

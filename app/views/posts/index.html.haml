@@ -13,7 +13,7 @@
           = image_tag(post.user.avatar.thumb.url)
         %p.blog-post-meta
           %b= post.user.email
-          (#{t "posts.label.views"}: #{post.views})
+          (#{t "posts.label.views"}: #{post.views}, #{t "posts.label.comments"}: #{post.comments_count})
           = post.created_at
         %p= post.body.html_safe
         - if post.category
@@ -21,7 +21,7 @@
             #{t "posts.label.category"}: #{post.category.name}
         %p
           = link_to t("posts.button.show"), post, class: "btn btn-info"
-          - if user_signed_in? && post.user == current_user
+          - if user_signed_in? && (post.user == current_user || current_user.has_role?(:admin))
             = link_to t("posts.button.edit"), edit_post_path(post), class: "btn btn-warning"
             = link_to t("posts.button.destroy"), post, method: :delete, data: { confirm: t("posts.confirm.destroy") }, class: "btn btn-danger"
   .col-md-3
@@ -42,3 +42,5 @@
         = link_to t("posts.label.created_at"), posts_path(sort_by: 'created_at')
       %li
         = link_to t("posts.label.views"), posts_path(sort_by: 'views')
+      %li
+        = link_to t("posts.label.comments"), posts_path(sort_by: 'comments_count')

@@ -1,4 +1,4 @@
-%h2= t("post.label.comments")
+%h2 #{t("post.label.comments")} (#{@post.comments_count}):
 = @comments.each do |comment|
   %p
     %b #{t("post.label.commenter")}:
@@ -8,4 +8,8 @@
 
   %p= comment.body.html_safe
 
-= render "comments/form"
+  - if comment.user == current_user || current_user.has_role?(:admin)
+    = link_to t("post.button.destroy"), [comment.post, comment], method: :delete, data: { confirm: t("post.confirm.destroy") }, class: "btn btn-danger"
+  %hr
+- if user_signed_in?
+  = render "comments/form"
