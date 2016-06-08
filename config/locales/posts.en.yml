@@ -7,10 +7,12 @@ en:
       category: "Category"
       categories: "Categories"
       categories_all: "All"
+      comments: "Comments"
     button:
       new: "New post"
       show: "Show"
       edit: "Edit"
       destroy: "Destroy"
+      comment: "Comment"
     confirm:
       destroy: "Are you sure?"

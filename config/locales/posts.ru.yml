@@ -7,10 +7,12 @@ ru:
       category: "Категория"
       categories: "Категории"
       categories_all: "Все"
+      comments: "Комментарии"
     button:
       new: "Создать пост"
       show: "Показать"
       edit: "Изменить"
       destroy: "Удалить"
+      comment: "Комментировать"
     confirm:
       destroy: "Вы уверены?"

@@ -19,3 +19,8 @@ en:
       back: "Back"
     confirm:
       destroy: "Are you sure?"
+    notice:
+      not_admin: "You must have administrator rights!"
+      created: "Category was successfully created."
+      updated: "Category was successfully updated."
+      destroyed: "Category was successfully destroyed."
