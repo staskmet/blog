@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options(options = {})
-    {locale: I18n.locale}
+    { locale: I18n.locale }
   end
 
   protected
@@ -19,20 +19,12 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) do |u|
       u.permit(:username, :email, :password, :password_confirmation,
-        :remember_me, :avatar, :remove_avatar, :avatar_cache)
+               :remember_me, :avatar, :remove_avatar, :avatar_cache)
     end
 
     devise_parameter_sanitizer.permit(:account_update) do |u|
       u.permit(:username, :email, :password, :password_confirmation, :current_password,
-        :remember_me, :avatar, :remove_avatar, :avatar_cache)
+               :remember_me, :avatar, :remove_avatar, :avatar_cache)
     end
   end
-
-# !!_!!
-#  def configure_permitted_parameters
-#    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :email, :password,
-#      :password_confirmation, :remember_me, :avatar, :remove_avatar, :avatar_cache) }
-#    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :email, :password,
-#      :password_confirmation, :current_password, :avatar, :remove_avatar, :avatar_cache) }
-#  end
 end

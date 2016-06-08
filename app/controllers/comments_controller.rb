@@ -24,8 +24,6 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    #@comment = Comment.new(comment_params)
-
     @post = Post.find(params[:post_id])
     @comment = @post.comments.new(comment_params)
     @comment.user_id = current_user.id
@@ -72,6 +70,7 @@ class CommentsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])
@@ -82,5 +81,4 @@ class CommentsController < ApplicationController
       # params.fetch(:comment, {})
       params.require(:comment).permit(:body)
     end
-
 end

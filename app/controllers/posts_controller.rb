@@ -5,12 +5,10 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-
     if params[:sort_by].nil?
-      # !!_!! значение по умолчанию
-      order_by = {created_at: :desc}
+      order_by = { created_at: :desc }
     else
-      order_by = {params[:sort_by] => :desc}
+      order_by = { params[:sort_by] => :desc }
     end
 
     @posts = Post.order(order_by).page(params[:page]).per(3)
@@ -42,13 +40,10 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    # !!_!!
-    # @post = Post.new(post_params)
     @post = current_user.posts.new(post_params)
-
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: t("post.notice.created") }
+        format.html { redirect_to @post, notice: t('post.notice.created') }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -62,7 +57,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: t("post.notice.updated") }
+        format.html { redirect_to @post, notice: t('post.notice.updated') }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
@@ -76,12 +71,13 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: t("post.notice.destroyed") }
+      format.html { redirect_to posts_url, notice: t('post.notice.destroyed') }
       format.json { head :no_content }
     end
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
