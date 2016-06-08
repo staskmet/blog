@@ -4,9 +4,7 @@ class Admin::CategoriesController < ApplicationController
   before_action :authenticate_admin!
 
   def authenticate_admin!
-    unless current_user.has_role? :admin
-      redirect_to '/', notice: t('categories.notice.not_admin')
-    end
+    redirect_to '/', notice: t('categories.notice.not_admin') unless current_user.has_role? :admin
   end
 
   # GET /admin/categories
@@ -71,13 +69,13 @@ class Admin::CategoriesController < ApplicationController
 
   private
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_admin_category
-      @admin_category = Category.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_admin_category
+    @admin_category = Category.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def admin_category_params
-      params.require(:category).permit(:name)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def admin_category_params
+    params.require(:category).permit(:name)
+  end
 end

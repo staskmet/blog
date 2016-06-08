@@ -5,11 +5,11 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    if params[:sort_by].nil?
-      order_by = { created_at: :desc }
-    else
-      order_by = { params[:sort_by] => :desc }
-    end
+    order_by = if params[:sort_by].nil?
+                 { created_at: :desc }
+               else
+                 { params[:sort_by] => :desc }
+               end
 
     @posts = Post.order(order_by).page(params[:page]).per(3)
 
@@ -78,13 +78,13 @@ class PostsController < ApplicationController
 
   private
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def post_params
-      params.require(:post).permit(:title, :body, :category_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def post_params
+    params.require(:post).permit(:title, :body, :category_id)
+  end
 end
