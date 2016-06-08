@@ -10,11 +10,25 @@ ru:
       updated_at: "Дата изменения"
       views: "Просмотры"
       category: "Категория"
+      comment: "Комментарий"
+      comments: "Комментарии"
+      commenter: "Комментатор"
+      comment_add: "Добавить комментарий"
+    notice:
+      created: "Пост успешно создан."
+      updated: "Пост успешно обновлен."
+      destroyed: "Пост успешно удален."
     button:
       new: "Создать пост"
       show: "Показать"
       edit: "Изменить"
       destroy: "Удалить"
       back: "Назад"
+      comment: "Комментировать"
     confirm:
       destroy: "Вы уверены?"
+  comment:
+    notice:
+      created: "Комментарий успешно создан."
+      updated: "Комментарий успешно обновлен."
+      destroyed: "Комментарий успешно удален."
